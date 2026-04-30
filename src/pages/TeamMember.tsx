@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams, Navigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Mail, Phone, Star, ArrowLeft } from "lucide-react";
+import { Mail, Phone, Star, ArrowLeft, MapPin } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Reveal } from "@/components/site/Reveal";
 import { resolveImageUrl } from "@/lib/assetUrl";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
-type Member = { id: string; name: string; slug: string; photo_url: string | null; role: string; bio: string; email: string; phone: string };
+type Member = { id: string; name: string; slug: string; photo_url: string | null; role: string; bio: string; email: string; phone: string; address: string };
 type Skill = { id: string; skill_name: string; level: number };
 type Review = { id: string; author_name: string; author_role: string; content: string; rating: number };
 type Faq = { id: string; question: string; answer: string };
@@ -84,6 +84,12 @@ export default function TeamMember() {
                   <a href={`tel:${member.phone}`} className="group flex items-center gap-3 p-4 bg-card border border-border rounded-xl hover:border-accent/50 transition-colors">
                     <Phone size={16} className="text-accent" />
                     <span className="text-sm">{member.phone}</span>
+                  </a>
+                )}
+                {member.address && (
+                  <a href={`https://maps.google.com/?q=${encodeURIComponent(member.address)}`} target="_blank" rel="noreferrer" className="group flex items-center gap-3 p-4 bg-card border border-border rounded-xl hover:border-accent/50 transition-colors sm:col-span-2">
+                    <MapPin size={16} className="text-accent shrink-0" />
+                    <span className="text-sm">{member.address}</span>
                   </a>
                 )}
               </div>
