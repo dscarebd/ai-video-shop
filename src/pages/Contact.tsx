@@ -32,7 +32,8 @@ export default function Contact() {
       return;
     }
     setSubmitting(true);
-    const { error } = await supabase.from("contact_submissions").insert([parsed.data]);
+    const payload = parsed.data as { name: string; email: string; service: string; message: string };
+    const { error } = await supabase.from("contact_submissions").insert(payload);
     setSubmitting(false);
     if (error) { toast.error("Could not send. Try again."); return; }
     toast.success("Message received. We'll reply within a business day.");
