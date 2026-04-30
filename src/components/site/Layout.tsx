@@ -7,7 +7,7 @@ export default function Layout() {
   const { pathname } = useLocation();
   useEffect(() => { window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior }); }, [pathname]);
   return (
-    <div className="min-h-screen flex flex-col text-foreground relative bg-mesh">
+    <div className="min-h-screen flex flex-col text-foreground relative">
       <Navbar />
       <main className="flex-1">
         <Outlet />
