@@ -33,8 +33,8 @@ export function Navbar() {
     >
       <div className="container flex items-center justify-between h-20">
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 rounded-full bg-primary border border-accent/40 flex items-center justify-center overflow-hidden">
-            <img src={logo} alt="EditFlow Studio logo" className="w-7 h-7 object-contain" />
+          <div className="relative w-10 h-10 rounded-full bg-background border border-accent/40 flex items-center justify-center overflow-hidden">
+            <img src={logo} alt="EditFlow Studio logo" className="w-8 h-8 object-contain" />
           </div>
           <div className="leading-tight">
             <div className="font-display text-xl tracking-tight">EditFlow<span className="text-accent">.</span></div>
