@@ -121,7 +121,7 @@ export default function TeamMember() {
         <section className="container mt-32">
           <h2 className="font-display text-3xl md:text-4xl mb-10">What clients say about {member.name.split(" ")[0]}</h2>
           <div className="grid md:grid-cols-2 gap-6">
-            {reviews.map((r, i) => (
+            {reviews.slice(0, 2).map((r, i) => (
               <Reveal key={r.id} delay={i * 0.08}>
                 <div className="p-8 bg-card border border-border rounded-2xl h-full">
                   <div className="flex gap-1 mb-3">
