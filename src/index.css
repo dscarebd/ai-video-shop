@@ -8,7 +8,7 @@
 @layer base {
   :root {
     /* Sunset Neon — LIGHT (off-white + pink/orange gradient base) */
-    --background: 25 60% 98%;          /* off-white warm */
+    --background: 340 100% 96%;        /* soft pink */
     --foreground: 285 40% 12%;
 
     --card: 0 0% 100%;
