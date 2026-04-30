@@ -102,7 +102,7 @@ function TeamAdmin() {
             <Input label="Role" value={editing.role ?? ""} onChange={v => setEditing(e => ({ ...e!, role: v }))} />
             <Input label="Email" value={editing.email ?? ""} onChange={v => setEditing(e => ({ ...e!, email: v }))} />
             <Input label="Phone" value={editing.phone ?? ""} onChange={v => setEditing(e => ({ ...e!, phone: v }))} />
-            <Input label="Photo URL" value={editing.photo_url ?? ""} onChange={v => setEditing(e => ({ ...e!, photo_url: v }))} />
+            <PhotoUpload value={editing.photo_url ?? ""} onChange={v => setEditing(e => ({ ...e!, photo_url: v }))} />
             <Input label="Sort order" value={String(editing.sort_order ?? 0)} onChange={v => setEditing(e => ({ ...e!, sort_order: Number(v) || 0 }))} />
           </div>
           <Input label="Address" value={editing.address ?? ""} onChange={v => setEditing(e => ({ ...e!, address: v }))} />
@@ -318,5 +318,42 @@ function Input({ label, value, onChange }: { label: string; value: string; onCha
       <div className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">{label}</div>
       <input value={value} onChange={e => onChange(e.target.value)} className="w-full bg-background border border-border rounded-xl p-3 text-sm" />
     </label>
+  );
+}
+
+function PhotoUpload({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+  const [uploading, setUploading] = useState(false);
+  async function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    const ext = file.name.split(".").pop() || "jpg";
+    const path = `team/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
+    const { error } = await supabase.storage.from("media").upload(path, file, { upsert: false, contentType: file.type });
+    if (error) { setUploading(false); return toast.error(error.message); }
+    const { data } = supabase.storage.from("media").getPublicUrl(path);
+    onChange(data.publicUrl);
+    setUploading(false);
+    toast.success("Photo uploaded");
+  }
+  return (
+    <div className="block">
+      <div className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">Photo</div>
+      <div className="flex items-center gap-3">
+        {value ? (
+          <img src={value} alt="" className="w-14 h-14 rounded-xl object-cover bg-muted border border-border" />
+        ) : (
+          <div className="w-14 h-14 rounded-xl bg-muted border border-border" />
+        )}
+        <label className="cursor-pointer px-4 py-2 border border-border rounded-full text-xs hover:border-accent/60">
+          {uploading ? "Uploading…" : "Upload photo"}
+          <input type="file" accept="image/*" onChange={handleFile} className="hidden" disabled={uploading} />
+        </label>
+        {value && (
+          <button type="button" onClick={() => onChange("")} className="text-xs text-destructive">Remove</button>
+        )}
+      </div>
+      <input value={value} onChange={e => onChange(e.target.value)} placeholder="…or paste image URL" className="w-full mt-2 bg-background border border-border rounded-xl p-2 text-xs" />
+    </div>
   );
 }
