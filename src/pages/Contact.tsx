@@ -9,7 +9,7 @@ import { SectionHeader } from "@/components/site/SectionHeader";
 const schema = z.object({
   name: z.string().trim().min(1, "Name required").max(100),
   email: z.string().trim().email("Valid email required").max(200),
-  service: z.string().trim().max(100).default(""),
+  service: z.string().trim().max(100),
   message: z.string().trim().min(5, "Tell us a bit more").max(2000),
 });
 
