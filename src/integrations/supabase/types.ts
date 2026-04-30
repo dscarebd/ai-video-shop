@@ -14,13 +14,299 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      contact_submissions: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+          service: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          name: string
+          service?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          service?: string
+        }
+        Relationships: []
+      }
+      faqs: {
+        Row: {
+          answer: string
+          created_at: string
+          id: string
+          member_id: string | null
+          question: string
+          scope: string
+          sort_order: number
+        }
+        Insert: {
+          answer: string
+          created_at?: string
+          id?: string
+          member_id?: string | null
+          question: string
+          scope?: string
+          sort_order?: number
+        }
+        Update: {
+          answer?: string
+          created_at?: string
+          id?: string
+          member_id?: string | null
+          question?: string
+          scope?: string
+          sort_order?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "faqs_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "team_members"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      projects: {
+        Row: {
+          category: string
+          client: string
+          created_at: string
+          description: string
+          id: string
+          sort_order: number
+          thumbnail_url: string | null
+          title: string
+        }
+        Insert: {
+          category?: string
+          client?: string
+          created_at?: string
+          description?: string
+          id?: string
+          sort_order?: number
+          thumbnail_url?: string | null
+          title: string
+        }
+        Update: {
+          category?: string
+          client?: string
+          created_at?: string
+          description?: string
+          id?: string
+          sort_order?: number
+          thumbnail_url?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
+      reviews: {
+        Row: {
+          author_name: string
+          author_role: string
+          content: string
+          created_at: string
+          id: string
+          member_id: string | null
+          rating: number
+          scope: string
+          sort_order: number
+        }
+        Insert: {
+          author_name: string
+          author_role?: string
+          content: string
+          created_at?: string
+          id?: string
+          member_id?: string | null
+          rating?: number
+          scope?: string
+          sort_order?: number
+        }
+        Update: {
+          author_name?: string
+          author_role?: string
+          content?: string
+          created_at?: string
+          id?: string
+          member_id?: string | null
+          rating?: number
+          scope?: string
+          sort_order?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reviews_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "team_members"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      services: {
+        Row: {
+          created_at: string
+          description: string
+          features: Json
+          id: string
+          image_url: string | null
+          price_label: string
+          sort_order: number
+          tier: string
+          title: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string
+          features?: Json
+          id?: string
+          image_url?: string | null
+          price_label?: string
+          sort_order?: number
+          tier?: string
+          title: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          features?: Json
+          id?: string
+          image_url?: string | null
+          price_label?: string
+          sort_order?: number
+          tier?: string
+          title?: string
+        }
+        Relationships: []
+      }
+      slug_redirects: {
+        Row: {
+          created_at: string
+          id: string
+          member_id: string | null
+          new_slug: string
+          old_slug: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          member_id?: string | null
+          new_slug: string
+          old_slug: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          member_id?: string | null
+          new_slug?: string
+          old_slug?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "slug_redirects_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "team_members"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      team_members: {
+        Row: {
+          bio: string
+          created_at: string
+          email: string
+          id: string
+          name: string
+          phone: string
+          photo_url: string | null
+          role: string
+          slug: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          bio?: string
+          created_at?: string
+          email?: string
+          id?: string
+          name: string
+          phone?: string
+          photo_url?: string | null
+          role?: string
+          slug: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          bio?: string
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          phone?: string
+          photo_url?: string | null
+          role?: string
+          slug?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      team_skills: {
+        Row: {
+          created_at: string
+          id: string
+          level: number
+          member_id: string
+          skill_name: string
+          sort_order: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          level?: number
+          member_id: string
+          skill_name: string
+          sort_order?: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          level?: number
+          member_id?: string
+          skill_name?: string
+          sort_order?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "team_skills_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "team_members"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      slugify: { Args: { input: string }; Returns: string }
     }
     Enums: {
       [_ in never]: never
