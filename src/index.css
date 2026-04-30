@@ -7,55 +7,55 @@
 
 @layer base {
   :root {
-    /* Sunset Neon — playful & colorful (orange + pink + purple) */
-    --background: 280 55% 6%;          /* deep aubergine night */
-    --foreground: 30 100% 96%;         /* warm cream */
+    /* Sunset Neon — LIGHT (off-white + pink/orange gradient base) */
+    --background: 25 60% 98%;          /* off-white warm */
+    --foreground: 285 40% 12%;
 
-    --card: 278 45% 11%;
-    --card-foreground: 30 100% 96%;
+    --card: 0 0% 100%;
+    --card-foreground: 285 40% 12%;
 
-    --popover: 278 45% 11%;
-    --popover-foreground: 30 100% 96%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 285 40% 12%;
 
-    --primary: 22 100% 58%;            /* vivid orange */
-    --primary-foreground: 280 55% 8%;
+    --primary: 22 100% 54%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 282 55% 20%;          /* purple */
-    --secondary-foreground: 30 100% 96%;
+    --secondary: 282 60% 96%;
+    --secondary-foreground: 285 40% 18%;
 
-    --muted: 280 30% 16%;
-    --muted-foreground: 30 30% 80%;
+    --muted: 285 30% 96%;
+    --muted-foreground: 285 15% 38%;
 
-    --accent: 330 95% 62%;             /* hot pink */
-    --accent-foreground: 280 55% 8%;
+    --accent: 330 95% 56%;
+    --accent-foreground: 0 0% 100%;
 
-    --magenta: 320 95% 60%;
-    --magenta-foreground: 30 100% 96%;
+    --magenta: 320 95% 56%;
+    --magenta-foreground: 0 0% 100%;
 
-    --destructive: 0 85% 60%;
-    --destructive-foreground: 30 100% 96%;
+    --destructive: 0 85% 55%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 285 40% 22%;
-    --input: 285 40% 22%;
-    --ring: 22 100% 58%;
+    --border: 285 25% 90%;
+    --input: 285 25% 90%;
+    --ring: 22 100% 54%;
 
     --radius: 0.75rem;
 
-    /* Gradients — sunset neon */
-    --gradient-royal: linear-gradient(135deg, hsl(282 70% 22%), hsl(278 60% 10%));
-    --gradient-gold: linear-gradient(135deg, hsl(22 100% 62%), hsl(330 95% 62%));
-    --gradient-aurora: radial-gradient(ellipse at top left, hsl(330 95% 62% / 0.45), transparent 55%),
-                       radial-gradient(ellipse at bottom right, hsl(22 100% 58% / 0.45), transparent 55%),
-                       radial-gradient(ellipse at center, hsl(275 90% 55% / 0.35), transparent 60%);
-    --gradient-mesh: radial-gradient(circle at 20% 30%, hsl(330 95% 62% / 0.40), transparent 45%),
-                     radial-gradient(circle at 80% 70%, hsl(22 100% 58% / 0.40), transparent 50%),
-                     radial-gradient(circle at 50% 50%, hsl(275 90% 55% / 0.30), transparent 60%);
+    /* Gradients — light sunset neon */
+    --gradient-royal: linear-gradient(135deg, hsl(330 100% 97%), hsl(22 100% 96%));
+    --gradient-gold: linear-gradient(135deg, hsl(22 100% 56%), hsl(330 95% 58%));
+    --gradient-aurora: radial-gradient(ellipse at top left, hsl(330 95% 70% / 0.30), transparent 55%),
+                       radial-gradient(ellipse at bottom right, hsl(22 100% 62% / 0.30), transparent 55%),
+                       radial-gradient(ellipse at center, hsl(275 85% 70% / 0.18), transparent 60%);
+    --gradient-mesh: radial-gradient(circle at 20% 30%, hsl(330 95% 70% / 0.22), transparent 45%),
+                     radial-gradient(circle at 80% 70%, hsl(22 100% 62% / 0.22), transparent 50%),
+                     radial-gradient(circle at 50% 50%, hsl(275 85% 70% / 0.15), transparent 60%);
 
     /* Shadows */
-    --shadow-gold: 0 20px 50px -20px hsl(22 100% 58% / 0.55);
-    --shadow-magenta: 0 20px 50px -20px hsl(330 95% 62% / 0.55);
-    --shadow-royal: 0 30px 70px -25px hsl(282 80% 10% / 0.8);
-    --shadow-elegant: 0 10px 30px -10px hsl(280 60% 3% / 0.8);
+    --shadow-gold: 0 20px 50px -20px hsl(22 100% 58% / 0.30);
+    --shadow-magenta: 0 20px 50px -20px hsl(330 95% 62% / 0.30);
+    --shadow-royal: 0 30px 70px -25px hsl(285 40% 30% / 0.18);
+    --shadow-elegant: 0 10px 30px -10px hsl(285 40% 20% / 0.15);
 
     /* Transitions */
     --transition-smooth: cubic-bezier(0.65, 0, 0.35, 1);
@@ -110,6 +110,8 @@
   body {
     @apply bg-background text-foreground font-body antialiased;
     font-feature-settings: 'ss01', 'cv11';
+    background-image: var(--gradient-mesh);
+    background-attachment: fixed;
   }
 
   h1, h2, h3, h4, h5 {
