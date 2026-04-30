@@ -95,25 +95,26 @@ export default function TeamMember() {
               </div>
             </Reveal>
 
-            {skills.length > 0 && (
-              <Reveal delay={0.25}>
-                <div className="mt-12">
-                  <h3 className="text-xs uppercase tracking-[0.3em] text-accent mb-6">Craft</h3>
-                  <div className="space-y-5">
-                    {skills.map((s, i) => (
-                      <div key={s.id}>
-                        <div className="flex justify-between text-sm mb-2"><span>{s.skill_name}</span><span className="text-muted-foreground">{s.level}%</span></div>
-                        <div className="h-1.5 rounded-full bg-border overflow-hidden">
-                          <motion.div initial={{ width: 0 }} whileInView={{ width: `${s.level}%` }} viewport={{ once: true }} transition={{ duration: 1.2, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }} className="h-full bg-gradient-to-r from-accent to-magenta" />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </Reveal>
-            )}
           </div>
         </div>
+
+        {skills.length > 0 && (
+          <Reveal delay={0.25}>
+            <div className="mt-20 w-full">
+              <h3 className="text-xs uppercase tracking-[0.3em] text-accent mb-8">Craft</h3>
+              <div className="grid md:grid-cols-2 gap-x-12 gap-y-6">
+                {skills.map((s, i) => (
+                  <div key={s.id}>
+                    <div className="flex justify-between text-sm mb-2"><span>{s.skill_name}</span><span className="text-muted-foreground">{s.level}%</span></div>
+                    <div className="h-1.5 rounded-full bg-border overflow-hidden">
+                      <motion.div initial={{ width: 0 }} whileInView={{ width: `${s.level}%` }} viewport={{ once: true }} transition={{ duration: 1.2, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }} className="h-full bg-gradient-to-r from-accent to-magenta" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        )}
       </section>
 
       {reviews.length > 0 && (
