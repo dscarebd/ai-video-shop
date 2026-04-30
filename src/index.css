@@ -124,12 +124,7 @@
     opacity: 0.04;
   }
 
-  /* Home — cameras + film strips */
-  body[data-route="home"]::before,
-  body[data-route=""]::before {
-    background-image: none;
-    opacity: 0;
-  }
+  /* Home — uses default cameras + film strips pattern from body::before */
 
   /* Services — sliders, scissors, pen tool */
   body[data-route="services"]::before {
