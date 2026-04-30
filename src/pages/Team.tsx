@@ -6,12 +6,12 @@ import { Reveal } from "@/components/site/Reveal";
 import { SectionHeader } from "@/components/site/SectionHeader";
 import { resolveImageUrl } from "@/lib/assetUrl";
 
-type Member = { id: string; name: string; slug: string; photo_url: string | null; role: string };
+type Member = { id: string; name: string; slug: string; photo_url: string | null; role: string; starting_price: string | null };
 
 export default function Team() {
   const [items, setItems] = useState<Member[]>([]);
   useEffect(() => {
-    supabase.from("team_members").select("id,name,slug,photo_url,role").order("sort_order").then(({ data }) => setItems((data ?? []) as Member[]));
+    supabase.from("team_members").select("id,name,slug,photo_url,role,starting_price").order("sort_order").then(({ data }) => setItems((data ?? []) as Member[]));
   }, []);
 
   return (
@@ -31,6 +31,12 @@ export default function Team() {
                   <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/70 backdrop-blur-md flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
                     <ArrowUpRight size={16} />
                   </div>
+                  {m.starting_price && (
+                    <div className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-background/80 backdrop-blur-md border border-accent/40 shadow-elegant">
+                      <div className="text-[9px] uppercase tracking-[0.25em] text-muted-foreground leading-none">Starts from</div>
+                      <div className="text-sm font-display text-gradient-gold leading-tight mt-0.5">{m.starting_price}</div>
+                    </div>
+                  )}
                 </div>
                 <div className="p-6">
                   <div className="text-[10px] uppercase tracking-[0.3em] text-accent">{m.role}</div>

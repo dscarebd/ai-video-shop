@@ -3,7 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Trash2, Plus, Save } from "lucide-react";
 
-type Member = { id: string; name: string; slug: string; photo_url: string | null; role: string; bio: string; email: string; phone: string; address: string; sort_order: number };
+type Member = { id: string; name: string; slug: string; photo_url: string | null; role: string; bio: string; email: string; phone: string; address: string; sort_order: number; starting_price: string };
 type Skill = { id: string; member_id: string; skill_name: string; level: number };
 type Review = { id: string; scope: string; member_id: string | null; author_name: string; author_role: string; rating: number; content: string };
 type Faq = { id: string; scope: string; member_id: string | null; question: string; answer: string };
@@ -63,7 +63,7 @@ function TeamAdmin() {
       const { error } = await supabase.from("team_members").update(rest as any).eq("id", id!);
       if (error) return toast.error(error.message);
     } else {
-      const payload = { name: editing.name ?? "New member", role: editing.role ?? "", bio: editing.bio ?? "", email: editing.email ?? "", phone: editing.phone ?? "", address: editing.address ?? "", photo_url: editing.photo_url ?? null, sort_order: members.length + 1, slug: "tmp" };
+      const payload = { name: editing.name ?? "New member", role: editing.role ?? "", bio: editing.bio ?? "", email: editing.email ?? "", phone: editing.phone ?? "", address: editing.address ?? "", photo_url: editing.photo_url ?? null, starting_price: editing.starting_price ?? "", sort_order: members.length + 1, slug: "tmp" };
       const { error } = await supabase.from("team_members").insert(payload as any);
       if (error) return toast.error(error.message);
     }
@@ -104,6 +104,7 @@ function TeamAdmin() {
             <Input label="Phone" value={editing.phone ?? ""} onChange={v => setEditing(e => ({ ...e!, phone: v }))} />
             <PhotoUpload value={editing.photo_url ?? ""} onChange={v => setEditing(e => ({ ...e!, photo_url: v }))} />
             <Input label="Sort order" value={String(editing.sort_order ?? 0)} onChange={v => setEditing(e => ({ ...e!, sort_order: Number(v) || 0 }))} />
+            <Input label="Starts from (e.g. $99)" value={editing.starting_price ?? ""} onChange={v => setEditing(e => ({ ...e!, starting_price: v }))} />
           </div>
           <Input label="Address" value={editing.address ?? ""} onChange={v => setEditing(e => ({ ...e!, address: v }))} />
           <div>

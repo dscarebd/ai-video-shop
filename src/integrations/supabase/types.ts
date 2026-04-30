@@ -237,6 +237,7 @@ export type Database = {
           role: string
           slug: string
           sort_order: number
+          starting_price: string
           updated_at: string
         }
         Insert: {
@@ -251,6 +252,7 @@ export type Database = {
           role?: string
           slug: string
           sort_order?: number
+          starting_price?: string
           updated_at?: string
         }
         Update: {
@@ -265,6 +267,7 @@ export type Database = {
           role?: string
           slug?: string
           sort_order?: number
+          starting_price?: string
           updated_at?: string
         }
         Relationships: []
