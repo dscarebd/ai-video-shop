@@ -7,55 +7,55 @@
 
 @layer base {
   :root {
-    /* Electric Pop — bold & vibrant (white + cyan + lime + yellow) */
-    --background: 0 0% 100%;           /* pure white */
-    --foreground: 220 30% 10%;         /* near-black ink */
+    /* Sunset Neon — playful & colorful (orange + pink + purple) */
+    --background: 280 55% 6%;          /* deep aubergine night */
+    --foreground: 30 100% 96%;         /* warm cream */
 
-    --card: 0 0% 100%;
-    --card-foreground: 220 30% 10%;
+    --card: 278 45% 11%;
+    --card-foreground: 30 100% 96%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 30% 10%;
+    --popover: 278 45% 11%;
+    --popover-foreground: 30 100% 96%;
 
-    --primary: 187 100% 45%;           /* electric cyan */
-    --primary-foreground: 220 30% 10%;
+    --primary: 22 100% 58%;            /* vivid orange */
+    --primary-foreground: 280 55% 8%;
 
-    --secondary: 75 95% 92%;           /* lime tint */
-    --secondary-foreground: 220 30% 10%;
+    --secondary: 282 55% 20%;          /* purple */
+    --secondary-foreground: 30 100% 96%;
 
-    --muted: 200 25% 96%;
-    --muted-foreground: 220 15% 38%;
+    --muted: 280 30% 16%;
+    --muted-foreground: 30 30% 80%;
 
-    --accent: 75 90% 55%;              /* lime */
-    --accent-foreground: 220 30% 10%;
+    --accent: 330 95% 62%;             /* hot pink */
+    --accent-foreground: 280 55% 8%;
 
-    --magenta: 50 100% 55%;            /* yellow (kept name as utility slot) */
-    --magenta-foreground: 220 30% 10%;
+    --magenta: 320 95% 60%;
+    --magenta-foreground: 30 100% 96%;
 
-    --destructive: 0 85% 55%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 30 100% 96%;
 
-    --border: 200 20% 90%;
-    --input: 200 20% 90%;
-    --ring: 187 100% 45%;
+    --border: 285 40% 22%;
+    --input: 285 40% 22%;
+    --ring: 22 100% 58%;
 
     --radius: 0.75rem;
 
-    /* Gradients — electric pop */
-    --gradient-royal: linear-gradient(135deg, hsl(187 100% 95%), hsl(75 95% 95%));
-    --gradient-gold: linear-gradient(135deg, hsl(187 100% 50%), hsl(75 90% 55%) 55%, hsl(50 100% 58%));
-    --gradient-aurora: radial-gradient(ellipse at top left, hsl(187 100% 55% / 0.45), transparent 55%),
-                       radial-gradient(ellipse at bottom right, hsl(75 90% 55% / 0.45), transparent 55%),
-                       radial-gradient(ellipse at center, hsl(50 100% 60% / 0.35), transparent 60%);
-    --gradient-mesh: radial-gradient(circle at 20% 30%, hsl(187 100% 55% / 0.35), transparent 45%),
-                     radial-gradient(circle at 80% 70%, hsl(75 90% 55% / 0.35), transparent 50%),
-                     radial-gradient(circle at 50% 50%, hsl(50 100% 58% / 0.30), transparent 60%);
+    /* Gradients — sunset neon */
+    --gradient-royal: linear-gradient(135deg, hsl(282 70% 22%), hsl(278 60% 10%));
+    --gradient-gold: linear-gradient(135deg, hsl(22 100% 62%), hsl(330 95% 62%));
+    --gradient-aurora: radial-gradient(ellipse at top left, hsl(330 95% 62% / 0.45), transparent 55%),
+                       radial-gradient(ellipse at bottom right, hsl(22 100% 58% / 0.45), transparent 55%),
+                       radial-gradient(ellipse at center, hsl(275 90% 55% / 0.35), transparent 60%);
+    --gradient-mesh: radial-gradient(circle at 20% 30%, hsl(330 95% 62% / 0.40), transparent 45%),
+                     radial-gradient(circle at 80% 70%, hsl(22 100% 58% / 0.40), transparent 50%),
+                     radial-gradient(circle at 50% 50%, hsl(275 90% 55% / 0.30), transparent 60%);
 
     /* Shadows */
-    --shadow-gold: 0 20px 50px -20px hsl(187 100% 50% / 0.45);
-    --shadow-magenta: 0 20px 50px -20px hsl(50 100% 55% / 0.45);
-    --shadow-royal: 0 30px 70px -25px hsl(220 30% 20% / 0.20);
-    --shadow-elegant: 0 10px 30px -10px hsl(220 30% 15% / 0.18);
+    --shadow-gold: 0 20px 50px -20px hsl(22 100% 58% / 0.55);
+    --shadow-magenta: 0 20px 50px -20px hsl(330 95% 62% / 0.55);
+    --shadow-royal: 0 30px 70px -25px hsl(282 80% 10% / 0.8);
+    --shadow-elegant: 0 10px 30px -10px hsl(280 60% 3% / 0.8);
 
     /* Transitions */
     --transition-smooth: cubic-bezier(0.65, 0, 0.35, 1);
