@@ -124,7 +124,12 @@
     opacity: 0.04;
   }
 
-  /* Home — uses default cameras + film strips pattern from body::before */
+  /* Home — no pattern, solid background */
+  body[data-route="home"]::before,
+  body[data-route=""]::before {
+    background-image: none;
+    opacity: 0;
+  }
 
   /* Services — sliders, scissors, pen tool */
   body[data-route="services"]::before {
