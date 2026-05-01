@@ -150,8 +150,18 @@ export default function TeamMember() {
           <Accordion type="single" collapsible>
             {faqs.map(f => (
               <AccordionItem key={f.id} value={f.id} className="border-border">
-                <AccordionTrigger className="font-display text-left text-lg hover:text-accent">{f.question}</AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed">{f.answer}</AccordionContent>
+                <AccordionTrigger className="font-display text-left text-lg hover:text-accent">
+                  {f.question
+                    .replace(/\{name\}/gi, member.name)
+                    .replace(/\{firstName\}/gi, member.name.split(" ")[0])
+                    .replace(/\{role\}/gi, member.role)}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed">
+                  {f.answer
+                    .replace(/\{name\}/gi, member.name)
+                    .replace(/\{firstName\}/gi, member.name.split(" ")[0])
+                    .replace(/\{role\}/gi, member.role)}
+                </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
