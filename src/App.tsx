@@ -10,6 +10,7 @@ import Projects from "./pages/Projects";
 import Team from "./pages/Team";
 import TeamMember from "./pages/TeamMember";
 import Contact from "./pages/Contact";
+import Privacy from "./pages/Privacy";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound.tsx";
 
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="/team" element={<Team />} />
             <Route path="/team/:slug" element={<TeamMember />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy" element={<Privacy />} />
           </Route>
           <Route path="/admin" element={<Admin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
