@@ -129,8 +129,8 @@ export default function TeamMember() {
                   </div>
                   <p className="font-display italic text-lg leading-relaxed">"{r.content}"</p>
                   <div className="mt-5 pt-5 border-t border-border/60 text-sm">
-                    <div>{r.author_name}</div>
-                    <div className="text-muted-foreground text-xs">{r.author_role}</div>
+                    <div>{member.name}</div>
+                    <div className="text-muted-foreground text-xs">{member.role}</div>
                   </div>
                 </div>
               </Reveal>
